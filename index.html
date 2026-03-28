@@ -1,363 +1,142 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Questyle - 探索未知</title>
-  <meta name="description" content="Questyle 创新空间 - 探索科技与人文的边界">
+  <title>Questyle - 自然灵感</title>
   <style>
-    :root {
-      --primary: #10b981;
-      --secondary: #059669;
-      --accent: #f59e0b;
-      --bg: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.8);
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: linear-gradient(135deg, #e6f7f0 0%, #f0f7f0 100%);
+      color: #333;
+      font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
-      overflow-x: hidden;
+      padding: 3rem;
     }
-    
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 2rem;
-      background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: 
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 50px,
-          rgba(16, 185, 129, 0.03) 50px,
-          rgba(16, 185, 129, 0.03) 51px
-        ),
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 50px,
-          rgba(16, 185, 129, 0.03) 50px,
-          rgba(16, 185, 129, 0.03) 51px
-        );
-      animation: gridMove 20s linear infinite;
-    }
-    
-    @keyframes gridMove {
-      from { transform: translate(0, 0); }
-      to { transform: translate(50px, 50px); }
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 1;
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 {
+      font-size: 3.5rem;
       text-align: center;
-      max-width: 900px;
-    }
-    
-    .hero h1 {
-      font-size: clamp(3rem, 10vw, 7rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      margin: 2rem 0;
+      background: linear-gradient(45deg, #4a9f8a, #6ab5a0);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: pulse 4s ease-in-out infinite;
+      color: transparent;
     }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
-    
-    .hero p {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      color: var(--muted);
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-    
-    .date-line {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.8rem 2rem;
-      background: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 50px;
-      font-size: 1rem;
-      color: var(--primary);
+    .subtitle {
+      font-size: 1.8rem;
+      text-align: center;
+      opacity: 0.8;
       margin-bottom: 3rem;
-      backdrop-filter: blur(10px);
     }
-    
-    .quote-box {
-      background: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.2);
+    .content {
+      background: white;
       border-radius: 20px;
-      padding: 2.5rem;
-      max-width: 700px;
-      margin: 0 auto 3rem;
-      backdrop-filter: blur(20px);
+      padding: 3rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
     }
-    
-    .quote-box::before {
-      content: '"';
+    .content::before {
+      content: '';
       position: absolute;
-      top: -20px;
-      left: 20px;
-      font-size: 150px;
-      color: rgba(16, 185, 129, 0.1);
-      font-family: Georgia, serif;
-      line-height: 1;
+      top: -50%;
+      right: -50%;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(circle, rgba(74,159,138,0.1) 0%, transparent 70%);
+      transform: rotate(30deg);
     }
-    
-    .quote-box blockquote {
-      font-size: 1.4rem;
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .quote-box cite {
-      display: block;
-      margin-top: 1.5rem;
-      color: var(--accent);
-      font-style: normal;
-      font-size: 1rem;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      max-width: 800px;
-      margin: 0 auto 3rem;
-    }
-    
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      display: block;
-    }
-    
-    .stat-label {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-    
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-      padding: 0 2rem;
-    }
-    
-    .feature {
-      background: var(--card-bg);
-      border: 1px solid rgba(16, 185, 129, 0.15);
+    .highlight {
+      background: #e6f7f0;
       border-radius: 16px;
-      padding: 2rem;
+      padding: 2.5rem;
+      text-align: center;
+      margin: 2.5rem 0;
       transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
     }
-    
-    .feature:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
+    .highlight:hover {
+      transform: scale(1.02);
+      background: #d4f0e6;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
-    
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .feature h3 {
+    .quote {
+      font-style: italic;
       font-size: 1.4rem;
-      color: var(--primary);
-      margin-bottom: 0.8rem;
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
     }
-    
-    .feature p {
-      color: var(--muted);
-      line-height: 1.6;
+    .water-drop {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(74,159,138,0.2);
+      opacity: 0;
+      transition: all 0.5s ease;
     }
-    
     .footer {
       text-align: center;
-      padding: 3rem 2rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(16, 185, 129, 0.1);
+      opacity: 0.7;
+      padding-top: 3rem;
+      border-top: 1px solid #e0e0e0;
     }
-    
-    .footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    
     @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .quote-box blockquote { font-size: 1.2rem; }
+      h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Questyle</h1>
-      <p>探索科技与人文的边界<br>发现未知的可能性</p>
+  <div class="container">
+    <h1>Questyle</h1>
+    <div class="subtitle">自然灵感的创意空间</div>
+
+    <div class="content">
+      <p>让灵感如溪流般自然涌现。Questyle 为创意工作者提供纯净、专注的数字环境，激发无限可能。</p>
       
-      <div class="date-line">
-        <span>📅</span>
-        <span id="currentDate"></span>
+      <div class="highlight">
+        <p>"当技术融入自然，创意便如泉水般涌流"</p>
       </div>
-      
-      <div class="quote-box">
-        <blockquote id="quoteText">加载中...</blockquote>
-        <cite id="quoteAuthor"></cite>
-      </div>
-      
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number" id="dayOfYear"></span>
-          <span class="stat-label">今年的第几天</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="weekNumber"></span>
-          <span class="stat-label">第几周</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="hoursLeft"></span>
-          <span class="stat-label">距明天剩余小时</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="progressPercent"></span>
-          <span class="stat-label">今年进度</span>
-        </div>
+
+      <div class="quote">
+        <p>在数字与自然的交汇处，发现真正的创造力</p>
       </div>
     </div>
-  </div>
-  
-  <div class="features">
-    <div class="feature">
-      <div class="feature-icon">🔬</div>
-      <h3>前沿研究</h3>
-      <p>探索最新的技术趋势，推动创新边界</p>
+
+    <div class="footer">
+      © 2026 Questyle.io · 保持自然 · 保持创意
     </div>
-    <div class="feature">
-      <div class="feature-icon">💻</div>
-      <h3>技术实践</h3>
-      <p>将理论转化为实际解决方案，创造价值</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🌐</div>
-      <h3>全球视野</h3>
-      <p>连接世界各地的创新者，共享知识与经验</p>
-    </div>
-  </div>
-  
-  <div class="footer">
-    <p>&copy; 2026 创新空间. 保留所有权利.</p>
-    <p style="margin-top: 1rem;">
-      联系：<a href="mailto:hbtony@aliyun.com">hbtony@aliyun.com</a>
-    </p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;">每日更新 · 持续探索 · 永不止步</p>
   </div>
 
   <script>
-    const now = new Date();
-    
-    // 日期显示
-    const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-    document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-CN', options);
-    
-    // 一年中的第几天
-    const start = new Date(now.getFullYear(), 0, 0);
-    const diff = now - start;
-    const oneDay = 1000 * 60 * 60 * 24;
-    const dayOfYear = Math.floor(diff / oneDay);
-    document.getElementById('dayOfYear').textContent = dayOfYear;
-    
-    // 周数
-    const target = new Date(now.valueOf());
-    const dayNr = (now.getDay() + 6) % 7;
-    target.setDate(target.getDate() - dayNr + 3);
-    const firstThursday = target.valueOf();
-    target.setMonth(0, 1);
-    if (target.getDay() !== 4) {
-      target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
-    }
-    const weekNumber = 1 + Math.ceil((firstThursday - target) / (1000 * 60 * 60 * 24 * 7));
-    document.getElementById('weekNumber').textContent = weekNumber;
-    
-    // 距明天剩余小时
-    const tomorrow = new Date(now);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(0, 0, 0, 0);
-    const hoursLeft = Math.ceil((tomorrow - now) / (1000 * 60 * 60));
-    document.getElementById('hoursLeft').textContent = hoursLeft;
-    
-    // 今年进度
-    const isLeap = (year) => (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-    const daysInYear = isLeap(now.getFullYear()) ? 366 : 365;
-    const progressPercent = ((dayOfYear / daysInYear) * 100).toFixed(1);
-    document.getElementById('progressPercent').textContent = progressPercent + '%';
-    
-    // 每日语录
-    const quotes = [
-      { text: "探索未知是人类的本质，科技是我们最好的工具。", author: "未知" },
-      { text: "真正的创新来自于对边界的挑战。", author: "史蒂夫·乔布斯" },
-      { text: "未来已经到来，只是分布得不太均匀。", author: "威廉·吉布森" },
-      { text: "最好的方式是预测未来的方式，就是创造它。", author: "彼得·德鲁克" },
-      { text: "技术本身没有好坏，取决于使用它的人。", author: "比尔·盖茨" },
-      { text: "好奇心是科学探索的最强动力。", author: "阿尔伯特·爱因斯坦" },
-      { text: "在变化中寻找机会，在挑战中发现可能。", author: "未知" }
-    ];
-    
-    const today = now.getDate();
-    const quote = quotes[today % quotes.length];
-    document.getElementById('quoteText').textContent = quote.text;
-    document.getElementById('quoteAuthor').textContent = `— ${quote.author}`;
+    // 水滴微动效
+    document.addEventListener('DOMContentLoaded', () => {
+      const highlight = document.querySelector('.highlight');
+      highlight.addEventListener('mouseenter', (e) => {
+        const rect = highlight.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const drop = document.createElement('div');
+        drop.className = 'water-drop';
+        drop.style.width = '40px';
+        drop.style.height = '40px';
+        drop.style.left = `${x - 20}px`;
+        drop.style.top = `${y - 20}px`;
+        highlight.appendChild(drop);
+        
+        setTimeout(() => {
+          drop.style.width = '80px';
+          drop.style.height = '80px';
+          drop.style.opacity = 0;
+        }, 10);
+        
+        setTimeout(() => {
+          drop.remove();
+        }, 500);
+      });
+    });
   </script>
 </body>
 </html>
